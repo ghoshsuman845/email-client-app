@@ -1,9 +1,11 @@
+import React, { useState } from "react";
+
 import { READ_EMAIL_LIST } from "../../utils/constants";
 import { formatDate, getDataFromStorage } from "../../utils/helpers"; 
-import { getEmailBody } from "../../services/api";
+import { getEmailBody } from "../../utils/services/api";
 import { getAvatar } from "../../utils/constants";
-import React, { useState } from "react";
-import { EmailOverviewProps } from "../../types/type";
+import { EmailOverviewProps } from "../../utils/types/type";
+
 import ShimmerWidget from "../ShimmerWidget";
 
 const EmailOverview: React.FC<EmailOverviewProps> = ({ email, setEmailData, emails, setEmails, emailData }) => {
@@ -13,7 +15,7 @@ const EmailOverview: React.FC<EmailOverviewProps> = ({ email, setEmailData, emai
   const imageUrl = getAvatar(name);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function openEmail() {
+  const openEmail = async () =>  {
 
     try {
       const response = await getEmailBody(id)
@@ -32,7 +34,7 @@ const EmailOverview: React.FC<EmailOverviewProps> = ({ email, setEmailData, emai
       setEmails(emailsCopy);
 
     } catch (e) {
-        console.error('This is Error', e)
+        console.error(e)
     }
 
   }

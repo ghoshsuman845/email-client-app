@@ -3,7 +3,7 @@ export interface EmailBody {
 }
 
 export interface EmailInfo {
-    display: any;
+    display: boolean;
     short_description: string;
     subject: string;
     isFavourite: boolean;
@@ -74,120 +74,32 @@ export interface EmailListProps {
 export interface FavoriteParams {
     id: string;
     isFavorite: boolean;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+
+export interface EmptyStateProps {
+    title: string;
+    subTitle: string;
+}
+
+export interface ErrorPageProps {
+    notFoundImg: string;
+    title: string;
+    subTitle?: string;
+    buttonLink: string;
+    buttonText: string;
+    buttonColor: string;
+}
+
+
+export interface PaginationProps {
+    dataPerPage: number;
+    totalNoOfPage: number;
+    currentPage: number;
+    paginate: Function;
+    maxPageNumberLimit: number;
+    minPageNumberLimit: number;
+    handlePrevBtn: () => void;
+    handleNextBtn: () => void;
+    onChangeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    noOfItemPerPage: Function
+}

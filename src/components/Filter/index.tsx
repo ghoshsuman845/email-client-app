@@ -1,28 +1,36 @@
-import { FilterProps } from "../../types/type";
+import { useEffect } from "react";
+import { FilterProps } from "../../utils/types/type";
 
 const Filter : React.FC<FilterProps> = ({ setFilters, filters }) => {
 
-  function updateFilters({
+const updateFilters = ({
     showFavourite = false,
     showRead = false,
     showUnread = false,
-  }) {
+  }) => {
     setFilters({
       showFavourite,
       showRead,
       showUnread,
     });
   }
-  function showFavorites() {
+
+  useEffect(() => {
+    updateFilters({ showUnread: false });
+  }, []);
+  
+  const showFavorites = () => {
     updateFilters({ showFavourite: true });
   }
 
-  function showReadEmails() {
+  const showReadEmails = () => {
     updateFilters({ showRead: true });
   }
-  function showUnreadEmails() {
+  const showUnreadEmails = () => {
     updateFilters({ showUnread: true });
   }
+
+  
   
   return (
     <div className="filter-options">
