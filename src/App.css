@@ -1,38 +1,188 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color:#f4f5f9;
+  padding: 2% 5%;
 }
 
-.App-link {
-  color: #61dafb;
+/* filter options */
+
+.filter-options{
+  display: flex;
+  column-gap: 2%;
+  margin-bottom: 2%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.filter-options__title{
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.filter-btn{
+   border: none;
+   background-color: transparent;
+}
+
+.highlight-btn{
+  background: #e1e4ea;
+  border: 1px solid #cfd2dc;
+  border-radius: 20px;
+  padding: 1px 15px;
+  cursor: pointer;
+}
+
+.filter-btn:hover{
+  cursor: pointer;
+}
+
+/* email overview */
+
+.email-wrapper{
+  display: flex;
+  column-gap: 20px;
+  padding: 2%;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #cfd2dc;
+}
+
+.email-wrapper__read{
+  background-color: #f2f2f2;
+}
+
+.email-content-wrapper{
+  font-size: 13px;
+  color: #636363;
+}
+
+.imp-details{
+  margin-bottom:7px;
+}
+
+.imp-details span{
+  font-weight: 600;
+}
+
+.extra-details{
+  font-size: 11px;
+  display: flex;
+  column-gap: 30px;
+}
+
+.extra-details .fav-text{
+  color: #e54065;
+  font-weight: 600;
+}
+
+/* email list */
+
+.email-list{
+  display: flex;
+  width: 100%;
+  column-gap: 3%;
+}
+
+.email-overview{
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.email-body{
+  word-wrap: break-word;
+  border: 1px solid #cfd2dc;
+  background: #fff;
+  padding: 3% 2%;
+  border-radius: 8px;
+  color: #636363;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar-wrapper{
+ display: flex;
+ column-gap: 20px;
+ align-items: center;
+}
+
+.avatar-wrapper .name{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fav-btn{
+  background: #e54065;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  height: fit-content;
+  padding: 4px 14px;
+}
+
+.fav-btn:hover{
+  cursor: pointer;
+}
+
+.email-body__content{
+  margin: 0% 9%;
+  display: flex;
+  row-gap: 20px;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.pagination{
+  display: flex;
+  font-size: 16px;
+  cursor: pointer;
+  justify-content: end;
+  column-gap: 5px;
+}
+
+.pagination-num{
+  width: 10px;
+  text-align: center;
+  padding: 1px 10px;
+  background: #e1e4ea;
+  border-radius: 5px;
+}
+
+/* shimmer widget */
+
+.shimmer-widget{
+  border-radius: 8px;
+  border: 1px solid #cfd2dc;
+  width: 100%;
+  height: 20vh;
+  margin-bottom: 20px;
+  background: #e1e4ea;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0%{
+    background-color: #e1e4ea ;
   }
-  to {
-    transform: rotate(360deg);
+  50%{
+    background-color: #f0f1f3;
   }
+  100%{
+    background-color: #f4f5f9 ;
+  }
+  
 }

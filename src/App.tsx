@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import EmailList from './components/EmailList';
+import './App.css';
+import Filter from './components/Filter';
+
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const [filters, setFilters] = useState({
+    showFavourite: false,
+    showUnread: false,
+    showRead: false,
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Filter filters={filters} setFilters={setFilters} />
+      <EmailList filters={filters} />
     </div>
   );
 }
