@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import EmailList from './components/EmailList';
 import './App.css';
 import Filter from './components/Filter';
+import EmailList from './components/EmailList';
 
 import './App.css';
 

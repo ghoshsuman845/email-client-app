@@ -165,7 +165,7 @@
 }
 
 .active{
-  background: var(--text-color);
+  background: var(--border-color);
 }
 
 /* shimmer widget */

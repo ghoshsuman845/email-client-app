@@ -7,6 +7,7 @@ import { getAvatar } from "../../utils/constants";
 import { EmailOverviewProps } from "../../utils/types/type";
 
 import ShimmerWidget from "../ShimmerWidget";
+import EmptyState from "../EmptyStatePage";
 
 const EmailOverview: React.FC<EmailOverviewProps> = ({ email, setEmailData, emails, setEmails, emailData }) => {
   const { date, id, from, isFavourite, isRead, short_description, subject } =
@@ -44,7 +45,7 @@ const EmailOverview: React.FC<EmailOverviewProps> = ({ email, setEmailData, emai
   }
 
   if (!isLoading && Array.isArray(emailData) && emailData.length === 0) {
-    return <div>No data to load</div>
+    return <EmptyState title={"Sorry!"} subTitle={"No data present!"} />
   }
   
   return (
