@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/email-client-app/static/css/main.0e0897ed.css",
-    "main.js": "/email-client-app/static/js/main.f4f10659.js",
+    "main.css": "/email-client-app/static/css/main.1f3004f9.css",
+    "main.js": "/email-client-app/static/js/main.4c124aeb.js",
     "static/js/787.ea70a84e.chunk.js": "/email-client-app/static/js/787.ea70a84e.chunk.js",
-    "static/media/Page500.png": "/email-client-app/static/media/Page500.8915cdd1d5fec5a7051e.png",
-    "static/media/NotFound.svg": "/email-client-app/static/media/NotFound.43a0984dca8bee38c60f600a278b73f5.svg",
+    "static/media/Page500.jpg": "/email-client-app/static/media/Page500.6fdf69e3f1f84b7e1e6f.jpg",
+    "static/media/NotFound.jpg": "/email-client-app/static/media/NotFound.9a906e1cf16c6c7fa3bb.jpg",
+    "static/media/Page404.jpg": "/email-client-app/static/media/Page404.7849e88961b36f9a00fc.jpg",
     "index.html": "/email-client-app/index.html",
-    "main.0e0897ed.css.map": "/email-client-app/static/css/main.0e0897ed.css.map",
-    "main.f4f10659.js.map": "/email-client-app/static/js/main.f4f10659.js.map",
+    "main.1f3004f9.css.map": "/email-client-app/static/css/main.1f3004f9.css.map",
+    "main.4c124aeb.js.map": "/email-client-app/static/js/main.4c124aeb.js.map",
     "787.ea70a84e.chunk.js.map": "/email-client-app/static/js/787.ea70a84e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e0897ed.css",
-    "static/js/main.f4f10659.js"
+    "static/css/main.1f3004f9.css",
+    "static/js/main.4c124aeb.js"
   ]
 }
