@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { READ_EMAIL_LIST } from "../../utils/constants";
-import { formatDate, getDataFromStorage } from "../../utils/helpers"; 
+import { formatDate, getDataFromStorage, setDataInStorage } from "../../utils/helpers"; 
 import { getEmailBody } from "../../utils/services/api";
 import { getAvatar } from "../../utils/constants";
 import { EmailOverviewProps } from "../../utils/types/type";
@@ -25,7 +25,10 @@ const EmailOverview: React.FC<EmailOverviewProps> = ({ email, setEmailData, emai
 
       const readEmails = getDataFromStorage(READ_EMAIL_LIST);
       const updatedReadEmails = [...readEmails, id];
-      sessionStorage.setItem(READ_EMAIL_LIST, JSON.stringify(updatedReadEmails));
+      
+      if(!readEmails.includes(id)){
+        setDataInStorage(READ_EMAIL_LIST, updatedReadEmails)
+      }
       const emailsCopy = emails.slice();
       const index = emailsCopy.findIndex((email) => email.id === id);
       emailsCopy[index] = {

@@ -1,15 +1,13 @@
-import Page500Img from '../../assets/images/Page500.png';
+import Page500Img from '../../assets/images/Page500.jpg';
 import ErrorPage from '../ErrorPage';
 
-const Page500: React.FC = ()=> {
+const Page500: React.FC = ()=> {    
     return (
-      <div className='Page'>
+      <div className='page-500'>
         <ErrorPage
           notFoundImg={Page500Img}
-          title='Oopsie! Something went wrong...'
           buttonText='Back to home'
           buttonLink='/'
-          buttonColor='bg-green'
         />
       </div>
     );

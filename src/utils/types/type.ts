@@ -83,11 +83,8 @@ export interface EmptyStateProps {
 
 export interface ErrorPageProps {
     notFoundImg: string;
-    title: string;
-    subTitle?: string;
     buttonLink: string;
     buttonText: string;
-    buttonColor: string;
 }
 
 

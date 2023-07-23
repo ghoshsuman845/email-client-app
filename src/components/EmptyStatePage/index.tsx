@@ -1,7 +1,8 @@
-import notFound from '../../assets/images/NotFound.svg';
+import notFound from '../../assets/images/NotFound.jpg';
 import { EmptyStateProps } from '../../utils/types/type';
 
-const EmptyState : React.FC<EmptyStateProps> = ({ title, subTitle }) => {    
+const EmptyState : React.FC<EmptyStateProps> = ({ title, subTitle }) => { 
+       
   return (
     <div className='empty-state-style'>
       <div className='img-container'>

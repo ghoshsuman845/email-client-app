@@ -6,10 +6,15 @@
   padding: 0;
   font-family: 'Poppins', sans-serif;
 }
+.main-app{
+  background-color: transparent;
+}
+
 .app{
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
-  background-color:#f4f5f9;
+  min-height: 100vh;
   padding: 2% 5%;
 }
 
@@ -207,16 +212,28 @@
 }
 
 .not-found {
-    width: 40%;
-    height: 100%;
+    width: 100%;
+    height: 70vh;
 }
 
 .title {
-    text-align: center;
-    margin-top: 40px;
+  position: absolute;
+  bottom: 12%;
+  left: 46%;
+  color: var(--accent-color);
+  font-weight: 500;
 }
 
 .sub-title {
     text-align: center;
     margin-top: 8px;
+}
+
+.link-button{
+  position: absolute;
+  bottom: 12%;
+  right: 5%;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent-color);
 }

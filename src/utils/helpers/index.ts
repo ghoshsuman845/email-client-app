@@ -15,6 +15,10 @@ export function getDataFromStorage(key: string): any[] {
     const data = sessionStorage.getItem(key);
     return data ? JSON.parse(data) : [];
 }
+
+export function setDataInStorage(key: string, data: any ){
+  sessionStorage.setItem(key, JSON.stringify(data));
+}
   
 
   

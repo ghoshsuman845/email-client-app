@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import EmailOverview from "../EmailOverview/index";
-import { formatDate, getDataFromStorage } from "../../utils/helpers";
+import { formatDate, getDataFromStorage, setDataInStorage } from "../../utils/helpers";
 import { FAVOURITE_EMAILS_LIST, READ_EMAIL_LIST, getAvatar} from "../../utils/constants";
 import { Email, EmailData, EmailListProps } from "../../utils/types/type";
 import ShimmerWidget from "../ShimmerWidget";
@@ -13,6 +13,9 @@ const EmailList: React.FC<EmailListProps> = ({ filters }) => {
   const [emails, setEmails] = useState<Email[]>([]);
   const [emailData, setEmailData] = useState<EmailData>();
   const [totalEmails , setTotalEmails] = useState<any>(0);
+  const [totalUnreadEmails , setTotalUnreadEmails] = useState<any>(0);
+  const [totalReadEmails , setTotalReadEmails] = useState<any>(0);
+  const [totalFavEmails , setTotalFavEmails] = useState<any>(0);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -36,10 +39,14 @@ const EmailList: React.FC<EmailListProps> = ({ filters }) => {
         isRead: readEmails.includes(email.id),
         isFavourite: favEmails.includes(email.id),
         display: true,
-      }));
+      }));  
+          
       setEmails(emailList);
       setIsLoading(false);
       setTotalEmails(fetchedEmails.total);
+      setTotalFavEmails(favEmails.length);
+      setTotalReadEmails(readEmails.length)
+      setTotalUnreadEmails(fetchedEmails.total - (favEmails.length + readEmails.length))
     } catch (e) {
       setIsLoading(false)
       setIsError(true)
@@ -51,20 +58,34 @@ const EmailList: React.FC<EmailListProps> = ({ filters }) => {
     fetchEmailList(page);
   }, [page]);
 
-  const handlePagination = (newPage: number) => {
+  const handlePagination = (newPage: number) => {    
     setPage(newPage);
   };
 
-  const renderPagination = () => {   
+  const renderPagination = (filter : any) => {  
+    let totalEmailsCount = totalEmails;
+
+    if(filter.showRead){
+      totalEmailsCount = totalReadEmails;
+    }
+
+    if(filter.showFavourite){
+      totalEmailsCount = totalFavEmails;
+    }
+
+    if(filter.showUnread){
+      totalEmailsCount = totalUnreadEmails;
+    }
+     
     let itemsPerPage = 10;
-    let totalPages = Math.ceil(totalEmails / itemsPerPage);
+    let totalPages = Math.ceil(totalEmailsCount / itemsPerPage);
      
     if (totalPages <= 1) {
       return null;
     }
 
     const paginationButtons = [];
-    for (let i = 1; i <= totalPages; i++) {
+    for (let i = 1; i <= totalPages; i++) {    
       paginationButtons.push(
         <div
           key={i}
@@ -83,7 +104,9 @@ const EmailList: React.FC<EmailListProps> = ({ filters }) => {
   const addEmailToFav = (id: string) => {
     const favEmails = getDataFromStorage(FAVOURITE_EMAILS_LIST);
     const updatedFavEmails = [...favEmails, id];
-    sessionStorage.setItem(FAVOURITE_EMAILS_LIST, JSON.stringify(updatedFavEmails));
+    if(!favEmails.includes(id)){
+      setDataInStorage(FAVOURITE_EMAILS_LIST, updatedFavEmails)
+    }
     const emailsCopy = emails.slice();
     const index = emailsCopy.findIndex((email) => email.id === id);
     emailsCopy[index] = {
@@ -138,9 +161,14 @@ if(isError){
  return (
   <div className="email-list">
     <div className="email-overview">
+      {
+         (totalFavEmails <= 0 && filters.showFavourite) || (totalReadEmails <= 0 && filters.showRead) || (totalUnreadEmails <= 0 && filters.showUnread) ?           
+           <EmptyState title={"No data found"} subTitle={""} /> : <></>
+      }
 
     {emails.length > 0
       ? emails.map((email: Email) => {
+        console.log("totalEmails:", totalEmails, "totalFavEmails",  totalFavEmails, "totalReadEmails",  totalReadEmails, "totalUnreadEmails", totalUnreadEmails, page, email);        
           if (!email.display) return null;
 
           return (
@@ -154,8 +182,8 @@ if(isError){
             />
           );
         })
-      : null}
-      {renderPagination()}
+      : <EmptyState title={"No elements found"} subTitle={""} /> }
+      {renderPagination(filters)}
     </div>
     
     {emailData !== undefined && <ShowEmailBody 
@@ -168,7 +196,11 @@ if(isError){
 
 };
 
-const ShowEmailBody = ({avatar,emailData, addEmailToFav }: {avatar: string,emailData: EmailData, addEmailToFav: Function }) => {
+const ShowEmailBody = ({avatar, emailData, addEmailToFav } : {avatar: string,emailData: EmailData, addEmailToFav: Function }) => {
+ const isMarkedFav = (id: string) => {
+  const favEmails = getDataFromStorage(FAVOURITE_EMAILS_LIST);
+  return favEmails.includes(id);
+ } 
  
   if(emailData?.body) {
     return (
@@ -178,9 +210,11 @@ const ShowEmailBody = ({avatar,emailData, addEmailToFav }: {avatar: string,email
                 <img src={avatar} alt="avatar" />
                 <h1 className="name">{emailData.name}</h1>
               </div>
-              <button className="fav-btn" onClick={() => addEmailToFav(emailData.id)}>
+
+              <button className="fav-btn" style={{display: isMarkedFav(emailData.id) ? "none" : "block" }} onClick={() => addEmailToFav(emailData.id)}>
                 Mark As favorite
               </button>
+
             </header>
             <div className="email-body__content">
               <p className="date">{formatDate(emailData.date)}</p>

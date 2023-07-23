@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Filter from '../../components//Filter';
-
 import '../../App.css';
 import EmailList from '../../components/EmailList';
+import Filter from '../../components/Filter';
 
 const EmailPage = () => {
   const [filters, setFilters] = useState({
