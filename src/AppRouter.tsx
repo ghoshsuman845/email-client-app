@@ -8,7 +8,7 @@ function AppRouter() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<EmailPage />} />
+                <Route path="/email-client-app" element={<EmailPage />} />
                 <Route path="*" element={<Page404 />} />
             </Routes>
         </Router>
