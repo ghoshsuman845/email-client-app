@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/email-client-app/static/css/main.1f3004f9.css",
-    "main.js": "/email-client-app/static/js/main.4c124aeb.js",
+    "main.js": "/email-client-app/static/js/main.b7e3f127.js",
     "static/js/787.ea70a84e.chunk.js": "/email-client-app/static/js/787.ea70a84e.chunk.js",
     "static/media/Page500.jpg": "/email-client-app/static/media/Page500.6fdf69e3f1f84b7e1e6f.jpg",
     "static/media/NotFound.jpg": "/email-client-app/static/media/NotFound.9a906e1cf16c6c7fa3bb.jpg",
     "static/media/Page404.jpg": "/email-client-app/static/media/Page404.7849e88961b36f9a00fc.jpg",
     "index.html": "/email-client-app/index.html",
     "main.1f3004f9.css.map": "/email-client-app/static/css/main.1f3004f9.css.map",
-    "main.4c124aeb.js.map": "/email-client-app/static/js/main.4c124aeb.js.map",
+    "main.b7e3f127.js.map": "/email-client-app/static/js/main.b7e3f127.js.map",
     "787.ea70a84e.chunk.js.map": "/email-client-app/static/js/787.ea70a84e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1f3004f9.css",
-    "static/js/main.4c124aeb.js"
+    "static/js/main.b7e3f127.js"
   ]
 }
